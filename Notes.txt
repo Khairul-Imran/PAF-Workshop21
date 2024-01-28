@@ -1,0 +1,16 @@
+1. First started by importing the structure of the tables, then the data from the link.
+- Ran the necessary files inside workbench (using root account).
+- Gave the privileges to khairultest
+
+2. Started on the models (properties and Populate method), then the necessary repo methods.
+
+3. Then did the necessary service methods.
+
+4. Then started on the REST Controllers.
+
+Important things to note:
+- Always need to have the Populate()
+- Always need to have the toJson methods
+- Date formatting is quite troublesome, need to be familiar with it.
+    - Can look at the date format given from the SQL -> then work from there. 
+    - For this workshop, order requests won't work properly, since the datetime is weird. (customer id 4).
