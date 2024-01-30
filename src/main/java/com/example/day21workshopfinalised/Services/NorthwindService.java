@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 import com.example.day21workshopfinalised.Models.Customer;
+import com.example.day21workshopfinalised.Models.FullOrder;
 import com.example.day21workshopfinalised.Models.Order;
 import com.example.day21workshopfinalised.Repositories.NorthwindRepository;
 
@@ -55,5 +56,11 @@ public class NorthwindService {
         }
 
         return (Collections.unmodifiableList(listOfOrders));
+    }
+
+    // Workshop 23.
+    // Get full orders by id.
+    public List<FullOrder> findAllOrdersById(Integer id) {
+        return northwindRepository.findAllOrdersById(id);
     }
 }

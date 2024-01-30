@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.day21workshopfinalised.Models.Customer;
+import com.example.day21workshopfinalised.Models.FullOrder;
 import com.example.day21workshopfinalised.Models.Order;
 
 import jakarta.json.Json;
@@ -73,6 +74,25 @@ public class JsonService {
         JsonArray jsonOrderArray = jsonArrayBuilder.build();
 
         return jsonOrderArray;
+    }
+
+    // Workshop 23.
+    public JsonArray fullOrdersToJson(List<FullOrder> fullOrders) {
+        JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+
+        for (FullOrder fullOrder : fullOrders) {
+            JsonObject fullOrderJson = Json.createObjectBuilder()
+                .add("order_id", fullOrder.getId())
+                .add("order_date", fullOrder.getOrderDate() != null ? fullOrder.getOrderDate().toString() : "")
+                .add("customer_id", fullOrder.getCustomerId())
+                .add("total", fullOrder.getTotalPrice())
+                .add("cost_price", fullOrder.getCostPrice())
+                .build();
+            jsonArrayBuilder.add(fullOrderJson);
+        }
+        JsonArray jsonFullOrderArray = jsonArrayBuilder.build();
+
+        return jsonFullOrderArray;
     }
 
 }

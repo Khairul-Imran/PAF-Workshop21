@@ -14,3 +14,11 @@ Important things to note:
 - Date formatting is quite troublesome, need to be familiar with it.
     - Can look at the date format given from the SQL -> then work from there. 
     - For this workshop, order requests won't work properly, since the datetime is weird. (customer id 4).
+
+
+Continued Workshop 23 on this repository too.
+Tables needed:
+- order-details
+- orders
+- products
+

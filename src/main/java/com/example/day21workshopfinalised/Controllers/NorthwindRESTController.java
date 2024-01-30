@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.day21workshopfinalised.Models.Customer;
+import com.example.day21workshopfinalised.Models.FullOrder;
 import com.example.day21workshopfinalised.Models.Order;
 import com.example.day21workshopfinalised.Services.JsonService;
 import com.example.day21workshopfinalised.Services.NorthwindService;
@@ -79,5 +80,19 @@ public class NorthwindRESTController {
         return ResponseEntity.ok(jsonOrdersArrayString);
     }
 
+    @GetMapping(path = "/orders/{orderId}")
+    public ResponseEntity<String> getFullOrderByOrderId(@PathVariable Integer orderId) {
+        System.out.println("Controller: Finding full order details for Order ID: " + orderId);
+        List<FullOrder> listOfFullOrders = northwindService.findAllOrdersById(orderId);
+        JsonArray jsonFullOrderArray = jsonService.fullOrdersToJson(listOfFullOrders);
+        String jsonFullOrderArrayString = jsonFullOrderArray.toString();
 
+        if (jsonFullOrderArray.isEmpty()) {
+            return ResponseEntity.status(404).body(
+                Json.createObjectBuilder().add("Message: ", "Cannot find full order details for Order Id: " + orderId + ".").build().toString()
+            );
+        }
+
+        return ResponseEntity.ok(jsonFullOrderArrayString);
+    }
 }
