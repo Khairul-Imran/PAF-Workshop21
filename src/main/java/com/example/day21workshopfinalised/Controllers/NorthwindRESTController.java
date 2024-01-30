@@ -36,7 +36,7 @@ public class NorthwindRESTController {
     public ResponseEntity<String> getAllCustomers(
             @RequestParam(required = false, defaultValue = "5") Integer limit, 
             @RequestParam(required = false, defaultValue = "0") Integer offset) {
-        // Wonder if Integer works or not?
+
         List<Customer> listOfCustomers = northwindService.findAllCustomers(limit, offset);
         JsonArray jsonCustomerArray = jsonService.customerListToJson(listOfCustomers);
         String jsonCustomerArrayString = jsonCustomerArray.toString();
@@ -80,6 +80,7 @@ public class NorthwindRESTController {
         return ResponseEntity.ok(jsonOrdersArrayString);
     }
 
+    // Workshop 23.
     @GetMapping(path = "/orders/{orderId}")
     public ResponseEntity<String> getFullOrderByOrderId(@PathVariable Integer orderId) {
         System.out.println("Controller: Finding full order details for Order ID: " + orderId);
